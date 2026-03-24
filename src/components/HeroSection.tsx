@@ -17,13 +17,12 @@ export default function HeroSection() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover scale-105"
       >
-        <source src="/assets/videos/Yacht_moving.mp4" type="video/mp4" />
-        <source src="/assets/videos/1.mp4" type="video/mp4" />
+        <source src="/assets/videos/Traveler.mp4" type="video/mp4" />
       </video>
 
       {/* Left-side overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#03045E]/80 via-[#023E8A]/40 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#03045E]/55 via-[#023E8A]/25 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/15" />
 
       {/* Hero Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-12 mt-16">
