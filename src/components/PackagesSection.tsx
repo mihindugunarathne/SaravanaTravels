@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FadeUp, StaggerGrid, StaggerItem } from "@/components/ui/Animate";
 
 const packages = [
   {
     id: 1,
+    slug: "kerala-backwaters",
     title: "Kerala Backwaters",
     subtitle: "God's Own Country",
     duration: "7 Days / 6 Nights",
@@ -15,6 +17,7 @@ const packages = [
   },
   {
     id: 2,
+    slug: "rajasthan-royal-tour",
     title: "Rajasthan Royal Tour",
     subtitle: "Land of Kings",
     duration: "10 Days / 9 Nights",
@@ -26,6 +29,7 @@ const packages = [
   },
   {
     id: 3,
+    slug: "goa-beach-escape",
     title: "Goa Beach Escape",
     subtitle: "Sun, Sand & Sea",
     duration: "5 Days / 4 Nights",
@@ -37,6 +41,7 @@ const packages = [
   },
   {
     id: 4,
+    slug: "himalayan-adventure",
     title: "Himalayan Adventure",
     subtitle: "Roof of the World",
     duration: "8 Days / 7 Nights",
@@ -77,7 +82,7 @@ export default function PackagesSection() {
 
         {/* Staggered Cards */}
         <StaggerGrid className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
-          {packages.map((pkg) => (
+          {packages.map((pkg, i) => (
             <StaggerItem key={pkg.id}>
               <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:shadow-[#0077B6]/15 transition-all duration-300 hover:-translate-y-2 group flex flex-col border border-[#CAF0F8]/60 h-full">
 
@@ -87,6 +92,7 @@ export default function PackagesSection() {
                     src={pkg.image}
                     alt={pkg.title}
                     fill
+                    priority={i < 4}
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, 25vw"
                   />
@@ -130,12 +136,12 @@ export default function PackagesSection() {
                     ))}
                   </ul>
 
-                  <a
-                    href="#contact"
+                  <Link
+                    href={`/packages/${pkg.slug}`}
                     className="block text-center bg-[#0077B6] text-white py-2.5 rounded-xl text-sm font-semibold hover:bg-[#023E8A] transition-colors duration-300 shadow-sm"
                   >
-                    Book Now
-                  </a>
+                    View package
+                  </Link>
                 </div>
               </div>
             </StaggerItem>
@@ -145,7 +151,10 @@ export default function PackagesSection() {
         {/* See More */}
         <FadeUp delay={0.2}>
           <div className="text-center">
-            <button className="group inline-flex items-center gap-2 border-2 border-[#0077B6] text-[#0077B6] font-semibold px-9 py-3.5 rounded-full hover:bg-[#0077B6] hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-[#0077B6]/20">
+            <Link
+              href="/packages"
+              className="group inline-flex items-center gap-2 border-2 border-[#0077B6] text-[#0077B6] font-semibold px-9 py-3.5 rounded-full hover:bg-[#0077B6] hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-[#0077B6]/20"
+            >
               See All Packages
               <svg
                 className="w-4 h-4 group-hover:translate-x-1 transition-transform"
@@ -155,7 +164,7 @@ export default function PackagesSection() {
               >
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </button>
+            </Link>
           </div>
         </FadeUp>
       </div>

@@ -1,6 +1,14 @@
 import Image from "next/image";
+import Link from "next/link";
 
-const quickLinks = ["Home", "About Us", "Packages", "Why Choose Us", "Reviews", "Contact"];
+const quickLinks = [
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/about" },
+  { label: "Packages", href: "/packages" },
+  { label: "Why Choose Us", href: "/why-choose-us" },
+  { label: "Reviews", href: "/reviews" },
+  { label: "Contact", href: "/contact" },
+];
 const popularPackages = [
   "Kerala Backwaters",
   "Rajasthan Royal Tour",
@@ -28,14 +36,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
           {/* Brand */}
           <div>
-            <a href="#home" className="flex items-center gap-3 mb-5 group">
-              <Image
-                src="/assets/images/logo.jpeg"
-                alt="Saravana Travels"
-                width={46}
-                height={46}
-                className="rounded-full object-cover ring-2 ring-white/20 group-hover:ring-[#00B4D8]/50 transition-all"
-              />
+            <Link href="/" className="flex items-center gap-3 mb-5 group">
+              <div className="relative h-[46px] w-[46px] shrink-0">
+                <Image
+                  src="/assets/images/logo.jpeg"
+                  alt="Saravana Travels"
+                  fill
+                  sizes="46px"
+                  className="rounded-full object-cover ring-2 ring-white/20 group-hover:ring-[#00B4D8]/50 transition-all"
+                />
+              </div>
               <div>
                 <div className="font-bold text-sm tracking-[0.2em] text-white">
                   SARAVANA
@@ -44,7 +54,7 @@ export default function Footer() {
                   TRAVELS
                 </div>
               </div>
-            </a>
+            </Link>
             <p className="text-white/50 text-sm leading-relaxed mb-6">
               Your trusted travel partner for extraordinary journeys across
               India and beyond. Crafting memories since 2014.
@@ -75,14 +85,14 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
-                <li key={link}>
-                  <a
-                    href="#"
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
                     className="text-white/50 text-sm hover:text-white transition-colors flex items-center gap-2 group"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#00B4D8]/50 group-hover:bg-[#00B4D8] transition-colors" />
-                    {link}
-                  </a>
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -96,13 +106,13 @@ export default function Footer() {
             <ul className="space-y-3">
               {popularPackages.map((pkg) => (
                 <li key={pkg}>
-                  <a
-                    href="#packages"
+                  <Link
+                    href="/packages"
                     className="text-white/50 text-sm hover:text-white transition-colors flex items-center gap-2 group"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-[#00B4D8]/50 group-hover:bg-[#00B4D8] transition-colors" />
                     {pkg}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
